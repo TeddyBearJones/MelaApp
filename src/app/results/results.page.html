@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Results
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <div *ngIf="items?.length > 0; else noResults">
+        <ul *ngFor="let item of items" class="collections">
+          <li type= circle class="collection-item">Name: {{item.name}}, Gender: {{item.gender}}, Classification: <strong> {{item.classification}}</strong> </li>
+        </ul>
+      </div>
+      
+      <ng-template #noResults>
+        <hr>
+        <h5>There are no results to list</h5>
+      </ng-template>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Upload or Review
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- <div class="camera"></div>
+
+    <input type="file" (change)="fileChanged($event)" /> -->
+    <ion-button fill="solid" expand="block" color="dark" (click)="choose()">Upload Image</ion-button>
+    <p style="text-align:center;"> <strong>OR</strong></p>
+    <ion-button fill="solid" expand="block" color="dark" (click)="check()">Check Results</ion-button>
+    <!-- <img *ngIf="imageURL" src="https://ucarecdn.com/{{ imageURL }}/" /> -->
+</ion-content>
