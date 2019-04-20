@@ -48,7 +48,7 @@ async upload(buffer, name){
      let storage = firebase.storage();
 
      storage.ref('images/' + name).put(blob).then((d)=>{
-      alert("Done");
+     alert("Done");
      let fs = firebase.firestore();
      storage.ref('images/' + name).getDownloadURL().then((url)=>{
       fs.collection("patients").doc('patient' + this.username).set({
