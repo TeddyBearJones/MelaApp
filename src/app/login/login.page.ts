@@ -35,7 +35,6 @@ export class LoginPage implements OnInit {
       }
       //new stuff
 
-      this.router.navigate(['/upload'])
   } catch (err){
     console.dir(err)
     if(err.code == "auth/user-not-found"){

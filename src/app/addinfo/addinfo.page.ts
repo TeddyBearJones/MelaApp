@@ -7,60 +7,23 @@ import { FilePath } from '@ionic-native/file-path/ngx'
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-upload',
-  templateUrl: './upload.page.html',
-  styleUrls: ['./upload.page.scss'],
+  selector: 'app-addinfo',
+  templateUrl: './addinfo.page.html',
+  styleUrls: ['./addinfo.page.scss'],
 })
-export class UploadPage implements OnInit {
+export class AddinfoPage implements OnInit {
 
-  imageURL: string
+  username:string = ""
+  gender:string = ""
+  age:number
+  imageURL;
+
   constructor(public router: Router, public http: Http, private fileChooser: FileChooser, private file: File, private filePath: FilePath) { }
 
   ngOnInit() {
   }
 
-
-  /* fileChanged(event) {
-    const files = event.target.files
-    console.log(files)
-
-    const data = new FormData()
-    data.append('file', files[0])
-    data.append('UPLOADCARE_STORE', '1')
-    data.append('UPLOADCARE_PUB_KEY', '5872239d2806a0d0bde2')
-
-    this.http.post('https://upload.uploadcare.com/base/', data)
-    .subscribe(event =>{
-      console.log(event)
-      this.imageURL = event.json().file
-    })
-  } */
-  /* choose() {
-    this.fileChooser.open().then((uri)=>{
-      alert(uri);
-
-      this.file.resolveLocalFilesystemUrl(uri).then((newUrl)=>{
-        alert(JSON.stringify(newUrl));
-
-        let dirPath = newUrl.nativeURL;
-        let dirPathSegments = dirPath.split('/')
-        dirPathSegments.pop()
-        dirPath = dirPathSegments.join('/')
-
-        this.file.readAsArrayBuffer(dirPath, newUrl.name).then(async (buffer)=>{
-          await this.upload(buffer, newUrl.name);
-          
-        })
-      })
-
-    })
-  } */
-
-
   choose() {
-    this.router.navigate(['/addinfo'])
-  }
-  /* choose() {
     this.fileChooser.open().then((uri) => {
       alert(uri);
 
@@ -86,14 +49,24 @@ async upload(buffer, name){
 
      storage.ref('images/' + name).put(blob).then((d)=>{
       alert("Done");
+     let fs = firebase.firestore();
+     storage.ref('images/' + name).getDownloadURL().then((url)=>{
+      fs.collection("patients").doc('patient' + this.username).set({
+        name: this.username,
+        gender: this.gender,
+        age: this.age,
+        url: url
+      })
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+      });
+
      }).catch((error)=>{
        alert(JSON.stringify(error))
      })
-  } */
-
-  check(){
-    this.router.navigate(['/results'])
   }
-
 }
-
