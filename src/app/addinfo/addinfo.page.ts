@@ -64,6 +64,7 @@ async upload(buffer, name){
       });
       });
      alert("Done");
+     this.router.navigate(['/results'])
      }).catch((error)=>{
        alert(JSON.stringify(error))
      })
