@@ -48,7 +48,6 @@ async upload(buffer, name){
      let storage = firebase.storage();
 
      storage.ref('images/' + name).put(blob).then((d)=>{
-     alert("Done");
      let fs = firebase.firestore();
      storage.ref('images/' + name).getDownloadURL().then((url)=>{
       fs.collection("patients").doc('patient' + this.username).set({
@@ -64,7 +63,7 @@ async upload(buffer, name){
         console.error("Error writing document: ", error);
       });
       });
-
+     alert("Done");
      }).catch((error)=>{
        alert(JSON.stringify(error))
      })
