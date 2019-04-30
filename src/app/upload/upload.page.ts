@@ -5,6 +5,15 @@ import * as firebase from 'firebase';
 import { Http } from '@angular/http'
 import { FilePath } from '@ionic-native/file-path/ngx'
 import { Router } from '@angular/router'
+import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
+
+import {
+  IMqttMessage,
+  MqttModule,
+  IMqttServiceOptions,
+  MqttService
+} from 'ngx-mqtt';
 
 @Component({
   selector: 'app-upload',
@@ -14,7 +23,23 @@ import { Router } from '@angular/router'
 export class UploadPage implements OnInit {
 
   imageURL: string
-  constructor(public router: Router, public http: Http, private fileChooser: FileChooser, private file: File, private filePath: FilePath) { }
+  private subscription: Subscription;
+  public message: string;
+  constructor(private _mqttService: MqttService, public router: Router, public http: Http, private fileChooser: FileChooser, private file: File, private filePath: FilePath) { 
+    // this.subscription = this._mqttService.observe('Classification').subscribe((message: IMqttMessage) => {
+    //   this.message = message.payload.toString();
+    //   console.log(this.message)
+    // });
+   }
+
+   public unsafePublish(topic: string, message: string): void {
+    this._mqttService.unsafePublish(topic, message, {qos: 1, retain: true});
+    //this._mqttService.publish(topic, message)
+  }
+
+  // public ngOnDestroy() {
+  //   this.subscription.unsubscribe();
+  // }
 
   ngOnInit() {
   }
@@ -58,6 +83,27 @@ export class UploadPage implements OnInit {
 
 
   choose() {
+    
+    // //mqtt
+    // this.client = connect('broker.mqttdashboard.com');
+    // this.client.on('connect', function () {
+    //   this.client.subscribe('MelaCap', function (err) {
+    //     if (!err) {
+    //       this.client.publish('MelaCap', 'Hello mqtt')
+    //     }
+    //   })
+    // })
+     
+    // this.client.on('message', function (topic, message) {
+    //   // message is Buffer
+    //   console.log(message.toString())
+    //   this.client.end()
+    // })
+    // //mqtt
+
+
+
+    //this.unsafePublish("image", JSON.stringify("https://firebasestorage.googleapis.com/v0/b/melanoma-app-1b76b.appspot.com/o/images%2F20181119_235515.jpg?alt=media&token=def595c7-e859-4598-acf2-6cfd772904a9"))
     this.router.navigate(['/addinfo'])
   }
   /* choose() {

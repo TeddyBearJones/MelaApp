@@ -20,6 +20,30 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
 import { ItemsComponent } from './components/items/items.component'
 
 import { ItemService } from './services/item.service'
+import { Observable } from 'rxjs';
+
+import {
+  IMqttMessage,
+  MqttModule,
+  IMqttServiceOptions,
+  MqttService
+} from 'ngx-mqtt';
+
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'broker.hivemq.com',
+  port: 8000,
+  protocol: 'ws',
+  path: '/mqtt'
+  // hostname: 'm16.cloudmqtt.com',
+  // port: 10034,
+  // protocol: "ws",
+  // username: "hyfiabxs",
+  // password: "gyMTyvkJE9pa"
+};
+
+export function mqttServiceFactory() {
+  return new MqttService(MQTT_SERVICE_OPTIONS);
+}
 
 @NgModule({
   declarations: [AppComponent, ItemsComponent],
@@ -31,6 +55,7 @@ import { ItemService } from './services/item.service'
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     HttpModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     AngularFirestoreModule
   ],
   providers: [

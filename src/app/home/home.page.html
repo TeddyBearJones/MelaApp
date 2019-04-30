@@ -10,16 +10,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
+  <!-- <ion-card class="welcome-card">
     <ion-img src="/assets/MelaCaptureLogo.png"></ion-img>
     <ion-card-header>
-      <ion-card-title>Welcome to Our App!</ion-card-title>
+      <ion-card-title>Welcome to MelaCapture!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <p>Here you can either capture an image of the suspected skin legion or preview previous records. </p>
       <p>Please select your option from the side menu.</p>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
+  <ion-card>
+      <ion-img src="/assets/MelaCaptureLogo.png"></ion-img>
+      <ion-card-header>
+        <ion-card-title>Welcome to MelaCapture!</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+          View patient records or capture an image of the suspected skin legion.
+      </ion-card-content>
+    </ion-card>
+    <ion-menu-toggle>
+        <ion-button expand="block" size="small" color="dark">Select Option</ion-button>
+    </ion-menu-toggle>
     <!-- <ion-list lines="none">
       <ion-list-header>
         <ion-label>Resources</ion-label>

@@ -37,6 +37,7 @@ export class RegisterPage implements OnInit {
   async register(){
     const { username, password, cpassword } = this
     if(password != cpassword){
+      this.presentAlert('Failed', "Passwords don't match!")
       return console.error("Passwords don't match")
     }
     try{
@@ -57,6 +58,7 @@ export class RegisterPage implements OnInit {
       this.router.navigate(['/login'])
     } catch(error) {
       console.dir(error)
+      this.presentAlert('Failed', 'User already exists!')
     }
     
   }

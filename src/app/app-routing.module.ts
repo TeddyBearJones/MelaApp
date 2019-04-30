@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'upload', loadChildren: './upload/upload.module#UploadPageModule' },
   { path: 'results', loadChildren: './results/results.module#ResultsPageModule' },
   { path: 'addinfo', loadChildren: './addinfo/addinfo.module#AddinfoPageModule' }
+  // { path: 'addinfo/:usr', loadChildren: './addinfo/addinfo.module#AddinfoPageModule' }
 ];
 
 @NgModule({
