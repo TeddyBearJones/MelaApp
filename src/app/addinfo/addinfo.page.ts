@@ -53,7 +53,6 @@ export class AddinfoPage implements OnInit {
 
    public unsafePublish(topic: string, message: string): void {
     this._mqttService.unsafePublish(topic, message, {qos: 2, retain: true});
-    //this._mqttService.publish(topic, message)
   }
 
   // public ngOnDestroy() {

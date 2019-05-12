@@ -14,13 +14,32 @@
     <ion-item>
       <ion-input placeholder="Name" type="text" [(ngModel)]="username"></ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-input placeholder="Gender" type="text" [(ngModel)]="gender"></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
       <ion-input placeholder="Age" type="text" [(ngModel)]="age"></ion-input>
     </ion-item>
+    <!-- Extra -->
+    <ion-list>
+      <ion-radio-group [(ngModel)]="gender">
+        <ion-list-header>
+          <ion-label>Gender</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio slot="start" value="Male"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio slot="start" value="Female"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <!-- Extra -->
   </ion-list>
 
-  <ion-button fill="solid" expand="block" color="dark" (click)="choose()">Add image</ion-button>
+  <ion-button fill="solid" expand="block" (click)="choose()">Add image</ion-button>
 </ion-content>
